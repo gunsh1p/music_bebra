@@ -54,7 +54,6 @@ namespace music_bebra
         };
         private string playing_song;
         Random random = new Random();
-
         public class Torrent
         {
             public string topic;
@@ -105,11 +104,6 @@ namespace music_bebra
             {
                 mediaPlayer.Pause();
             }
-        }
-
-        private void NOPE(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("НЕТ");
         }
 
         private void searchBtn_MouseDown(object sender, MouseButtonEventArgs e)
@@ -183,5 +177,11 @@ namespace music_bebra
                 mediaPlayer.Play();
             }
         }
+
+        private void NOPE(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("НЕТ");
+        }
+
     }
 }
