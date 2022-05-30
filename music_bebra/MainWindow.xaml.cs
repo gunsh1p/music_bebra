@@ -24,6 +24,9 @@ namespace music_bebra
     /// </summary>
     public partial class MainWindow : Window
     {
+        public bool IsPlaying { get; private set; }
+        private bool IsLoaded = false;
+        private MediaPlayer mediaPlayer = new MediaPlayer();
         public class Torrent
         {
             public string topic;
@@ -37,6 +40,7 @@ namespace music_bebra
         public MainWindow()
         {
             InitializeComponent();
+            IsPlaying = false;
         }
 
         private void searchBtn_Click(object sender, RoutedEventArgs e)
@@ -60,6 +64,7 @@ namespace music_bebra
 
             Torrents res = JsonConvert.DeserializeObject<Torrents>(responseFromServer);
 
+            /*
             songName.Content = res.songs[0].topic_id;
 
             foreach (var val in resultListBox.Items)
@@ -73,6 +78,7 @@ namespace music_bebra
                 elem.Content = "<Button x:Name=\"" + res.songs[i].topic_id + "\" Content=\"" + res.songs[i].topic + "\">";
                 resultListBox.Items.Add(elem);
             }
+            */
 
             // Cleanup the streams and the response.
             reader.Close();
@@ -80,5 +86,33 @@ namespace music_bebra
             response.Close();
 
         }
+
+        private void PausePlay(object sender, MouseButtonEventArgs e)
+        {
+            IsPlaying = !IsPlaying;
+            PlayButton.Kind = !IsPlaying ? MaterialDesignThemes.Wpf.PackIconKind.Play : MaterialDesignThemes.Wpf.PackIconKind.Pause;
+            if (IsPlaying && !IsLoaded)
+            {
+                //играем пока одну песню пока без бека
+                // Разбирайся сам с этой ебаниной кароче
+                // тебе нужно как то это подгужать же еще я ваще хз
+                mediaPlayer.Open(new Uri(@"pack://siteoforigin:,,,/testmusic.wav"));
+                IsLoaded = true;
+            }
+            if (IsPlaying)
+            {
+                mediaPlayer.Play();
+            }
+            else
+            {
+                mediaPlayer.Pause();
+            }
+        }
+
+        private void NOPE(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("НЕТ");
+        }
+
     }
 }

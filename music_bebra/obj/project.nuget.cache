@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "3TnfBcJpFSgFZ4TSxlVNqics5lw7sO6lQDMJkJldF21fD9tVH5Yw0FTKbTJClgsOHsbTIoF6zOsylAtbP24fGA==",
+  "dgSpecHash": "v86uaanbsaXbKNVNCejgoydXUh2zc9HPtFUmvDkN7thatSLNWtiyjPfIROTrYApdJDuWYactr87+SUV2ijTlUA==",
   "success": true,
-  "projectFilePath": "D:\\SHP\\C#\\music_bebra\\music_bebra\\music_bebra.csproj",
+  "projectFilePath": "C:\\Users\\natal\\Programming\\music_bebra\\music_bebra\\music_bebra.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\berto_ls6\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
-    "C:\\Users\\berto_ls6\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512",
-    "C:\\Users\\berto_ls6\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\natal\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
+    "C:\\Users\\natal\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512",
+    "C:\\Users\\natal\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

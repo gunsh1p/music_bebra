@@ -3,44 +3,82 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:music_bebra"
         mc:Ignorable="d"
-        Title="MainWindow" Height="374" Width="800"
+        Title="MainWindow" Height="600" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="CanMinimize">
-    <Grid>
-        <materialDesign:Card HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="100" Width="748">
-            <TextBlock Style="{DynamicResource MaterialDesignHeadline2TextBlock}" HorizontalAlignment="Center" TextWrapping="Wrap" Text="BebraMusic" VerticalAlignment="Center" Height="72"/>
-        </materialDesign:Card>
-        <Slider x:Name="timerSLider" VerticalAlignment="Top" Margin="26,195,568,0"></Slider>
-        <TextBlock x:Name="timerTxtBlock" HorizontalAlignment="Left" VerticalAlignment="Top"  Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Margin="251,193,0,0" Width="89">0:00/3:23</TextBlock>
-        <Grid x:Name="Controls" Margin="26,232,460,74">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon x:Name="playBtn" Kind="Play" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="50"/>
-            <materialDesign:PackIcon x:Name="nextBtn" Kind="SkipNext" Width="100" Height="50" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <materialDesign:PackIcon x:Name="previousBtn" Kind="SkipPrevious" Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Grid>
-        <Label x:Name="songName" Style="{DynamicResource MaterialDesignLabel}" FontSize="16" FontWeight="Bold" Content="Never Gonna Give You Up - Rick Astley" HorizontalAlignment="Left" Margin="26,145,0,0" VerticalAlignment="Top" Width="314"/>
-        <TextBox x:Name="searchTxtBox" Style="{DynamicResource MaterialDesignTextBox}" HorizontalAlignment="Left" Margin="26,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="235" Height="47" FontSize="25"/>
-        <Button x:Name="searchBtn" Content="Поиск" HorizontalAlignment="Left" Margin="267,292,0,0" VerticalAlignment="Top" Click="searchBtn_Click" Cursor="Hand"/>
-        <ListBox x:Name="resultListBox" Margin="387,145,26,10">
-            <ListBoxItem Height="62">
-                <Button Content="Button"/>
-            </ListBoxItem>
-        </ListBox>
-        <!--<materialDesign:Card Padding="32" Margin="16,16,16,0" Height="76" VerticalAlignment="Top">
-            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">My First Material Design App</TextBlock>
-        </materialDesign:Card>-->
+        >
+    <Border CornerRadius="7" Background="{DynamicResource MaterialDesignPaper}" >
+        <StackPanel>
+            <TextBlock Margin="16 0" Style="{DynamicResource MaterialDesignHeadline2TextBlock}">BebraMusic</TextBlock>
+            <materialDesign:Card Padding="16" Margin="16">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox materialDesign:HintAssist.Hint="Search query" x:Name="searchTxtBox" />
+                    <materialDesign:PackIcon Grid.Column="1" Width="30" Height="30" Kind="Search"/>
+                </Grid>
+            </materialDesign:Card>
 
-    </Grid>
+            <materialDesign:Card Padding="16" Margin="16 0 16 16">
+                <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}">Search results</TextBlock>
+            </materialDesign:Card>
+
+            <materialDesign:Card Padding="16" Margin="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Label Style="{DynamicResource MaterialDesignLabel}" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center">Never Gonna Give You Up - Rick Astley</Label>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Slider VerticalAlignment="Center"></Slider>
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{DynamicResource MaterialDesignHeadline6TextBlock}">0:00/3:23</TextBlock>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Padding="16" Margin="16 0 16 16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="Controls" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="Play" 
+                                                 Grid.Column="1" 
+                                                 VerticalAlignment="Center" 
+                                                 HorizontalAlignment="Center"
+                                                 Width="100" Height="50"
+                                                 MouseDown="PausePlay"
+                                                 x:Name="PlayButton"/>
+                        <materialDesign:PackIcon Kind="SkipNext" 
+                                                 Width="100" Height="50"
+                                                 Grid.Column="2"
+                                                 VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center"
+                                                 MouseDown="NOPE"/>
+                        <materialDesign:PackIcon Kind="SkipPrevious"
+                                                 Width="100" Height="50"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 MouseDown="NOPE"/>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+        </StackPanel>
+    </Border>
 </Window>
